@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>API-DELETE</title>
+    </head>
+    <body>
+        <script>
+            YOUR_URL = 'https://jsonplaceholder.typicode.com/posts/1'
+            const myDataObject ={ userId: 1}
+            fetch(YOUR_URL, {
+                method: 'DELETE',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(myDataObject)
+            })
+            .then(response => {
+                console.log(response.status);
+                if(response.status === 200) {
+                    alert("status code:" + response.status );
+                    return response.json( )
+                }
+                
+            })
+            .then(data => 
+                // this is the data we get after doing the delete request, do whatever you want with this data
+                console.log(data) 
+            );
+        </script>
+    </body>
+</html>

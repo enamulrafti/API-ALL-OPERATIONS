@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>API-PUT OP.</title>
+    </head>
+    <body>
+        <script>
+            //data source to update the API
+            const dataToUpdate = {
+            userId: 1,
+            id: 1,
+            title: "Updated blog post",
+            body: "This is the updated content of the blog post.",
+            };
+            //convert the data to json string
+            const jsonString = JSON.stringify(dataToUpdate);
+
+            const url = 'https://jsonplaceholder.typicode.com/posts/1';
+
+            const options = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: jsonString
+            };
+
+            fetch(url, options)
+            .then(response => {
+                if (!response.ok) {
+                throw new Error(`HTTP error ${response.status}`);
+                }
+                //to check the status code
+                if(response.status >= 200){
+                    alert("Response:"+response.status);
+                    console.log(response);
+                    return response.json();
+                }
+
+            })
+            .then(updatedData => {
+                console.log('Data updated:', updatedData);
+            })
+            .catch(error => {
+                console.error('Error updating data:', error);
+            });
+        </script>
+    </body>
+</html>
